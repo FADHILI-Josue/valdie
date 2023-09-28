@@ -15,6 +15,7 @@ export { isTel } from './lib/isTel'
 export { isURL } from './lib/isUrl'
 export { isDistinct } from './lib/isDistinct'
 export { isIPv4 } from './lib/isIPv4'
+export { isUuid } from './lib/isUuid'
 
 export type { Response } from './utils/response'
 
@@ -44,6 +45,13 @@ class Validie {
     return this
   }
   isString() {
+    if (typeof this.#validation_string !== 'string') {
+      this.#response('string')
+    }
+    return this
+  }
+
+  isUuid() {
     if (typeof this.#validation_string !== 'string') {
       this.#response('string')
     }

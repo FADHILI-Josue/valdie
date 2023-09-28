@@ -40,6 +40,7 @@ import valdie from 'https://cdn.skypack.dev/valdie'
 4. <a href="#isURL">`isURL`</a>
 5. <a href="#isDistinct">`isDistinct`</a>
 6. <a href="#isIPv4">`isIPv4`</a>
+7. <a href="#isUuid">`isUuid`</a>
 
 
 ### They are two ways of consuming our api
@@ -85,6 +86,39 @@ if(success)
     console.log("myIp is an IPv4 address")
 else 
     console.log("It's not an IPv4 address")
+```
+
+### isUuid
+
+```ts
+import { isUuid } from "valdie"
+
+// sample
+
+console.log(isUuid('34483ae5-8a6b-4965-9384-cd0ce0191e84')) // { success : true }
+console.log( isUuid('helloworld') )  // { message : "helloworld is not a valid uuid" , success : false } 
+
+// usage 
+
+function generateRandomUuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+            v = c === 'x' ? r : (r & 0x3 | 0x8); // 
+        return v.toString(16);
+    });
+}
+const  { message , success } =  isUuid(generateRandomUuid())
+
+if(success) 
+    console.log("this is a valid uuid")
+else 
+    console.log("It's not a valid uuid")
+
+// or 
+import valdie from "valdie"
+
+const result = valdie('String to test').isString().isUuid();
+
 ```
 
 ## Maintainers

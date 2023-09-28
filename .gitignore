@@ -111,3 +111,6 @@ pack-lock.json
 
 IDE and editor files
 .idea
+
+# pnpm lockfile
+pnpm-lock.yaml
